@@ -15,6 +15,8 @@ https://github.com/xrozbo03/Digital-electronics-1
 - [x] Table
 - [x] Listing of VHDL source code
 
+*italic*
+
 | **Operator** | **Description** |
 | :-: | :-- |
 | `<=` | Value assignment |
