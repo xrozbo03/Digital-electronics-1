@@ -4,7 +4,7 @@
 
 1. list 1
 2. list 2
-⋅⋅1. podlist
+  * 1. podlist
 
 - [x] Headers
 - [x] Emphasis (italics, bold)
@@ -13,6 +13,7 @@
 - [x] Table
 - [x] Listing of VHDL source code
 
+*tabulka
 | **Operator** | **Description** |
 | :-: | :-- |
 | `<=` | Value assignment |
