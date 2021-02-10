@@ -13,7 +13,6 @@
 - [x] Table
 - [x] Listing of VHDL source code
 
-*tabulka
 | **Operator** | **Description** |
 | :-: | :-- |
 | `<=` | Value assignment |
