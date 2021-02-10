@@ -2,6 +2,8 @@
 
 ## Labs
 
+https://github.com/xrozbo03/Digital-electronics-1
+
 1. list 1
 2. list 2
   * 1. podlist
