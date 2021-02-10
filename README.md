@@ -13,6 +13,18 @@
 - [x] Table
 - [x] Listing of VHDL source code
 
+| **Operator** | **Description** |
+| :-: | :-- |
+| `<=` | Value assignment |
+| `and` | Logical AND |
+| `nand` | Logical AND with negated output |
+| `or` | Logical OR |
+| `nor` | Logical OR with negated output |
+| `not` | Nagation |
+| `xor` | Exclusive OR |
+| `xnor` | Exclusive OR with negated output |
+| `-- comment` | Comments |
+
 **Source code**
 
 ```VHDL
