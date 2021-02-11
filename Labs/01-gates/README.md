@@ -42,9 +42,9 @@ end architecture dataflow;
 | 1 | 1 | 0 | 0 |
 | 1 | 1 | 1 | 0 |
 
-![Screenshot with simulated time waveforms](Images/Screenshot DeMorgan.png)
+![Screenshot with simulated time waveforms](Images/Screenshot DeMorgan.PNG)
 
-[EDA Playground link] (https://www.edaplayground.com/x/LerG)
+[EDA Playground link](https://www.edaplayground.com/x/LerG)
 
 
 ### Verification of Distributive laws:
@@ -80,6 +80,6 @@ begin
 end architecture dataflow;
 ```
 
-![Screenshot with simulated time waveforms](Images/Screenshot Distributive.png)
+![Screenshot with simulated time waveforms](Images/Screenshot Distributive.PNG)
 
-[EDA Playground link] (https://www.edaplayground.com/x/LerG)
+[EDA Playground link](https://www.edaplayground.com/x/LerG)
