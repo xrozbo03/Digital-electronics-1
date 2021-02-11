@@ -42,7 +42,7 @@ end architecture dataflow;
 | 1 | 1 | 0 | 0 |
 | 1 | 1 | 1 | 0 |
 
-![Screenshot with simulated time waveforms](Images/Screenshot DeMorgan.PNG)
+![waveforms](Images/Screenshot DeMorgan.png)
 
 [EDA Playground link](https://www.edaplayground.com/x/LerG)
 
@@ -80,6 +80,6 @@ begin
 end architecture dataflow;
 ```
 
-![Screenshot with simulated time waveforms](Images/Screenshot Distributive.PNG)
+![waveforms](Images/Screenshot Distributive.png)
 
 [EDA Playground link](https://www.edaplayground.com/x/LerG)
