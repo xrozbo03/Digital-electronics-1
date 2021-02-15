@@ -1,5 +1,8 @@
 # Lab 1
 
+### GitHub link
+[GitHub link to Digital-electronics-1 repository](https://github.com/xrozbo03/Digital-electronics-1)
+
 ### Verification of De Morgan's laws of function f(c,b,a):
 
 ![Logic function](Images/equations.png)
