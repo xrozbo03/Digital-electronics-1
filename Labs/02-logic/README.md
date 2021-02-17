@@ -26,6 +26,7 @@
 ## 2. A 2-bit comparator.
 
 Karnaugh map for "equals" function
+
 ![Karnaugh map for "equals" function](Images/kmap_equals.png)
 
 Karnaugh map for "greater than" function
