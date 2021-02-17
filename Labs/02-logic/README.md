@@ -42,7 +42,7 @@ Karnaugh map for "less than" function
 
 ## 3. A 4-bit binary comparator.
 
-### design.vhdl
+### VHDL code
 
 ```VHDL
 library ieee;
@@ -74,7 +74,7 @@ begin
 end architecture Behavioral;
 ```
 
-### testbench.vhdl
+### VHDL testbench
 
 ```VHDL
 ------------------------------------------------------------------------
@@ -115,7 +115,7 @@ begin
         -- Report a note at the begining of stimulus process
         report "Stimulus process started" severity note;
 
-		-- test 01
+	-- test 01
         s_b <= "0000"; s_a <= "0000"; wait for 100 ns;
         -- Expected output
         assert ((s_B_greater_A = '0') and (s_B_equals_A = '1') and (s_B_less_A = '0'))
