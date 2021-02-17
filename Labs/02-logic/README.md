@@ -30,14 +30,15 @@
 **Karnaugh map for "equals" function**
 
 ![Karnaugh map for "equals" function](Images/kmap_equals.png | width=250)
+<img src="Images/kmap_equals.png" width="100">
 
 **Karnaugh map for "greater than" function**
 
-![Karnaugh map for "greater" function](Images/kmap_greater.png | width=250)
+![Karnaugh map for "greater" function](Images/kmap_greater.png | width="250")
 
 **Karnaugh map for "less than" function**
 
-![Karnaugh map for "less" function](Images/kmap_less.png | width=250)
+![Karnaugh map for "less" function](Images/kmap_less.png | width=250px)
 
 
 ![Binary comparator simplified functions](Images/comparator_min.png)
