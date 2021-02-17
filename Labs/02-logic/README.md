@@ -1,6 +1,6 @@
 # Lab 2: Combinational logic
 
-## Preparation
+## 1. Preparation
 
 | **Dec. equivalent** | **B[1:0]** | **A[1:0]** | **B is greater than A** | **B equals A** | **B is less than A** |
 | :-: | :-: | :-: | :-: | :-: | :-: |
@@ -22,3 +22,17 @@
 | 15 | 1 1 | 1 1 | 0 | 1 | 0 |
 
 ![Binary comparator functions](Images/comparator.png)
+
+## 2. A 2-bit comparator.
+
+Karnaugh map for "equals" function
+![Karnaugh map for "equals" function](Images/kmap_equals.png)
+
+Karnaugh map for "greater than" function
+
+Karnaugh map for "less than" function
+
+
+![Binary comparator simplified functions](Images/comparator_min.png)
+
+## 3. A 4-bit binary comparator.
