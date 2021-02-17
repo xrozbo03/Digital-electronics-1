@@ -31,7 +31,11 @@ Karnaugh map for "equals" function
 
 Karnaugh map for "greater than" function
 
+![Karnaugh map for "equals" function](Images/kmap_greater.png)
+
 Karnaugh map for "less than" function
+
+![Karnaugh map for "equals" function](Images/kmap_less.png)
 
 
 ![Binary comparator simplified functions](Images/comparator_min.png)
