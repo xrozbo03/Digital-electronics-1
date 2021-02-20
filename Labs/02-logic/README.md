@@ -39,12 +39,17 @@
 
 <img src="Images/kmap_less.png" width="500">
 
+simplified SoP form of the "greater than" function and a simplified PoS form of the "less than" function
 
 ![Binary comparator simplified functions](Images/comparator_min.png)
 
+### Link to my EDA Playground - 2-bit binary comparator
+
+https://www.edaplayground.com/x/Y9rM
+
 ## 3. A 4-bit binary comparator.
 
-### VHDL code
+### VHDL architecture
 
 ```VHDL
 library ieee;
@@ -195,7 +200,10 @@ begin
 
 end architecture testbench;
 ```
+### Listing of simulator console output, i.e. with one reported error
 
-![waveforms](Images/ScreenshotWaveforms.png)
+![Log screenshot](Images/Console.png)
 
-[EDA Playground link](https://www.edaplayground.com/x/DSMt)
+### EDA Playground link
+
+https://www.edaplayground.com/x/DSMt
