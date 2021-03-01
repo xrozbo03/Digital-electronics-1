@@ -4,12 +4,22 @@
 
 | **LED** | **connection** | **x** | **Switch** | **connection** |
 | :---: | :---: | :---: | :---: | :---: |
-| LED 0 | 0 0 | x | 0 | 0 |
-| LED 1 | 0 0 | x | 0 | 0 |
-| LED 2 | 0 0 | x | 0 | 0 |
-| LED 3 | 0 0 | x | 0 | 0 |
-| LED 4 | 0 1 | x | 1 | 0 |
-
+| LED 0 | 1 | x | SW 0 | 0 |
+| LED 1 | 1 | x | SW 1 | 0 |
+| LED 2 | 1 | x | SW 2 | 0 |
+| LED 3 | 1 | x | SW 3 | 0 |
+| LED 4 | 1 | x | SW 4 | 0 |
+| LED 5 | 1 | x | SW 5 | 0 |
+| LED 6 | 1 | x | SW 6 | 0 |
+| LED 7 | 1 | x | SW 7 | 0 |
+| LED 8 | 1 | x | SW 8 | 0 |
+| LED 9 | 1 | x | SW 9 | 0 |
+| LED 10 | 1 | x | SW 10 | 0 |
+| LED 11 | 1 | x | SW 11 | 0 |
+| LED 12 | 1 | x | SW 12 | 0 |
+| LED 13 | 1 | x | SW 13 | 0 |
+| LED 14 | 1 | x | SW 14 | 0 |
+| LED 15 | 1 | x | SW 15 | 0 |
 
 ## 2. Two-bit wide 4-to-1 multiplexer
 
