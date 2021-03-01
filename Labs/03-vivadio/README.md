@@ -4,22 +4,22 @@
 
 | **LED** | **connection** | **x** | **Switch** | **connection** |
 | :---: | :---: | :---: | :---: | :---: |
-| LED 0 | 1 |  | SW 0 | 0 |
-| LED 1 | 1 |  | SW 1 | 0 |
-| LED 2 | 1 |  | SW 2 | 0 |
-| LED 3 | 1 |  | SW 3 | 0 |
-| LED 4 | 1 |  | SW 4 | 0 |
-| LED 5 | 1 |  | SW 5 | 0 |
-| LED 6 | 1 |  | SW 6 | 0 |
-| LED 7 | 1 |  | SW 7 | 0 |
-| LED 8 | 1 |  | SW 8 | 0 |
-| LED 9 | 1 |  | SW 9 | 0 |
-| LED 10 | 1 |  | SW 10 | 0 |
-| LED 11 | 1 |  | SW 11 | 0 |
-| LED 12 | 1 |  | SW 12 | 0 |
-| LED 13 | 1 |  | SW 13 | 0 |
-| LED 14 | 1 |  | SW 14 | 0 |
-| LED 15 | 1 |  | SW 15 | 0 |
+| LED 0 | H17 |  | SW 0 | J15 |
+| LED 1 | K15 |  | SW 1 | L16 |
+| LED 2 | J13 |  | SW 2 | M13 |
+| LED 3 | N14 |  | SW 3 | R15 |
+| LED 4 | R18 |  | SW 4 | R17 |
+| LED 5 | V17 |  | SW 5 | T18 |
+| LED 6 | U17 |  | SW 6 | U18 |
+| LED 7 | U16 |  | SW 7 | R13 |
+| LED 8 | V16 |  | SW 8 | T8 |
+| LED 9 | T15 |  | SW 9 | U8 |
+| LED 10 | U14 |  | SW 10 | R16 |
+| LED 11 | T16 |  | SW 11 | T13 |
+| LED 12 | V15 |  | SW 12 | H6 |
+| LED 13 | V14 |  | SW 13 | U12 |
+| LED 14 | V12 |  | SW 14 | U11 |
+| LED 15 | V11 |  | SW 15 | V10 |
 
 ## 2. Two-bit wide 4-to-1 multiplexer
 
