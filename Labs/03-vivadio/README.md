@@ -2,6 +2,14 @@
 
 ## 1. Preparation
 
+| **Dec. equivalent** | **B[1:0]** | **A[1:0]** | **B is greater than A** |
+| 0 | 0 0 | 0 0 | 0 |
+| 1 | 0 0 | 0 1 | 0 |
+| 2 | 0 0 | 1 0 | 0 |
+| 3 | 0 0 | 1 1 | 0 |
+| 4 | 0 1 | 0 0 | 1 |
+
+
 ## 2. Two-bit wide 4-to-1 multiplexer
 
 ### VHDL architecture from source file mux_2bit_4to1.vhd
