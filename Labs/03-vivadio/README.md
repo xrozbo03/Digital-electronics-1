@@ -2,6 +2,8 @@
 
 ## 1. Preparation
 
+### Table with connection of 16 slide switches and 16 LEDs on Nexys A7 board
+
 | **LED** | **connection** | **x** | **Switch** | **connection** |
 | :---: | :---: | :---: | :---: | :---: |
 | LED 0 | H17 |  | SW 0 | J15 |
