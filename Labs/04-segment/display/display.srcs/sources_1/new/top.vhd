@@ -34,7 +34,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity top is
     Port 
     (
-            SW : in STD_LOGIC_VECTOR (4-1 downto 0);    --Input binary data
+            SW : in  STD_LOGIC_VECTOR (4-1 downto 0);    --Input binary data
             CA : out STD_LOGIC;                         -- Cathod A
             CB : out STD_LOGIC;
             CC : out STD_LOGIC;
@@ -74,15 +74,19 @@ begin
     LED(3 downto 0) <= SW;
 
     -- Turn LED(4) on if input value is equal to 0, ie "0000"
-    -- WRITE YOUR CODE HERE
+    LED (4) <= '1' when (SW = "0000") else '0';
     
     -- Turn LED(5) on if input value is greater than 9
-    -- WRITE YOUR CODE HERE
+    LED (5) <= '1' when (SW > "1001") else '0';
     
     -- Turn LED(6) on if input value is odd, ie 1, 3, 5, ...
-    -- WRITE YOUR CODE HERE
+    LED (6) <= '1' when (SW(0) = '1') else '0';
     
     -- Turn LED(7) on if input value is a power of two, ie 1, 2, 4, or 8
-    -- WRITE YOUR CODE HERE
+    LED (7) <= '1' when (SW = "0001") else
+               '1' when (SW = "0010") else
+               '1' when (SW = "0100") else
+               '1' when (SW = "1000") else
+               '0';
 
 end Behavioral;
