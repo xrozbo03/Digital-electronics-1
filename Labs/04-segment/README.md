@@ -135,7 +135,7 @@ p_stimulus : process
 
 ### Screenshot with simulated time waveforms
 
-![waveforms](Images\screen.png)
+![waveforms](Images/screen.png)
 
 ### Listing of VHDL code from source file top.vhd with 7-segment module instantiation
 
