@@ -1,3 +1,7 @@
+---
+typora-root-url: Images
+---
+
 # Lab 4: Seven-segment display decoder
 
 ## 1. Preparation
@@ -131,7 +135,7 @@ p_stimulus : process
 
 ### Screenshot with simulated time waveforms
 
-![waveforms](Images\graf01.png) 
+![waveforms](/graf01.png)
 
 ### Listing of VHDL code from source file top.vhd with 7-segment module instantiation
 
