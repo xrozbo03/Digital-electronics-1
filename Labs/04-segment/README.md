@@ -1,7 +1,3 @@
----
-
----
-
 # Lab 4: Seven-segment display decoder
 
 ## 1. Preparation
