@@ -7,7 +7,7 @@
 ## 1. Preparation
 
 ### Figure or table with connection of 7-segment displays on Nexys A7 board
-| **Segment** | **connection** | **x** | **AN** | **connection** |
+| Cathodes | **connection** | **x** | **Anodes** | **connection** |
 | :---: | :---: | :---: | :---: | :---: |
 | CA | T10 |  | AN0 | J17 |
 | CB | R10 |  | AN1 | J18 |
@@ -145,7 +145,7 @@ p_stimulus : process
 
 ### Screenshot with simulated time waveforms
 
-![waveforms](Images/screen.png)
+![waveforms](Images/screen2.png)
 
 ### Listing of VHDL code from source file top.vhd with 7-segment module instantiation
 
