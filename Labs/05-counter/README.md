@@ -82,12 +82,34 @@ p_cnt_up_down : process(clk)
 
         -- Enable counting
         s_en     <= '1';
-        
+
         -- Change counter direction
         s_cnt_up <= '1';
-        wait for 380 ns;
+        wait for 230 ns;
+         -- Expected output
+        assert (s_cnt = "1111")
+        -- If false, then report an error
+        report "Test failed for input on 230ns" severity error;
+        
+        wait for 10 ns;
+         -- Expected output
+        assert (s_cnt = "0000")
+        -- If false, then report an error
+        report "Test failed for input on 240ns" severity error;
+        
+        wait for 140 ns;
+         -- Expected output
+        assert (s_cnt = "1110")
+        -- If false, then report an error
+        report "Test failed for input on 380ns" severity error;
+        
         s_cnt_up <= '0';
         wait for 220 ns;
+        
+        -- Expected output
+        assert (s_cnt = "1000")
+        -- If false, then report an error
+        report "Test failed for input on 600ns" severity error;
 
         -- Disable counting
         s_en     <= '0';
@@ -101,7 +123,7 @@ p_cnt_up_down : process(clk)
 
 ### Screenshot with simulated time waveforms
 
-![Counter waveforms](Images/counterwaveforms.png)
+![Counter waveforms](Images/counterwaveforms2.png)
 
 ## 3. Top level
 

@@ -25,7 +25,7 @@ end entity tb_cnt_up_down;
 architecture testbench of tb_cnt_up_down is
 
     -- Number of bits for testbench counter
-    constant c_CNT_WIDTH         : natural := 5;
+    constant c_CNT_WIDTH         : natural := 4;
     constant c_CLK_100MHZ_PERIOD : time    := 10 ns;
 
     --Local signals
@@ -92,9 +92,31 @@ begin
         
         -- Change counter direction
         s_cnt_up <= '1';
-        wait for 380 ns;
+        wait for 230 ns;
+         -- Expected output
+        assert (s_cnt = "1111")
+        -- If false, then report an error
+        report "Test failed for input on 230ns" severity error;
+        
+        wait for 10 ns;
+         -- Expected output
+        assert (s_cnt = "0000")
+        -- If false, then report an error
+        report "Test failed for input on 240ns" severity error;
+        
+        wait for 140 ns;
+         -- Expected output
+        assert (s_cnt = "1110")
+        -- If false, then report an error
+        report "Test failed for input on 380ns" severity error;
+        
         s_cnt_up <= '0';
         wait for 220 ns;
+        
+        -- Expected output
+        assert (s_cnt = "1000")
+        -- If false, then report an error
+        report "Test failed for input on 600ns" severity error;
 
         -- Disable counting
         s_en     <= '0';
