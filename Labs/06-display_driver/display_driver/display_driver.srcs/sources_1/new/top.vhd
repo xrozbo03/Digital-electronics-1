@@ -1,59 +1,52 @@
-# Lab 6: Driver for multiple seven-segment displays
+----------------------------------------------------------------------------------
+-- Company: 
+-- Engineer: 
+-- 
+-- Create Date: 17.03.2021 16:13:12
+-- Design Name: 
+-- Module Name: top - Behavioral
+-- Project Name: 
+-- Target Devices: 
+-- Tool Versions: 
+-- Description: 
+-- 
+-- Dependencies: 
+-- 
+-- Revision:
+-- Revision 0.01 - File Created
+-- Additional Comments:
+-- 
+----------------------------------------------------------------------------------
 
-## 1. Preparation
 
-### Timing diagram figure for displaying value `3.142`
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
 
-![Timing diagram](Images/wavedrom.png)
+-- Uncomment the following library declaration if using
+-- arithmetic functions with Signed or Unsigned values
+--use IEEE.NUMERIC_STD.ALL;
 
-## 2. Display driver
+-- Uncomment the following library declaration if instantiating
+-- any Xilinx leaf cells in this code.
+--library UNISIM;
+--use UNISIM.VComponents.all;
 
-### Listing of VHDL code of the process `p_mux`
+entity top is
+    Port ( 
+        CLK100MHZ   : in STD_LOGIC;                         --Main Clock
+        BTNC        : in STD_LOGIC;                         --Synchronous reset
+        SW          : in STD_LOGIC_VECTOR (16-1 downto 0);  --Four 4-bit values
+        CA          : out STD_LOGIC;                        --Cathod A
+        CB          : out STD_LOGIC;
+        CC          : out STD_LOGIC;
+        CD          : out STD_LOGIC;
+        CE          : out STD_LOGIC;
+        CF          : out STD_LOGIC;
+        CG          : out STD_LOGIC;
+        DP          : out STD_LOGIC;
+        AN          : out STD_LOGIC_VECTOR (8-1 downto 0)); --Common anode signals to individual displays
+end top;
 
-```vhdl
-    p_mux : process(s_cnt, data0_i, data1_i, data2_i, data3_i, dp_i)
-    begin
-        case s_cnt is
-            when "11" =>
-                s_hex <= data3_i;
-                dp_o  <= dp_i(3);
-                dig_o <= "0111";
-
-            when "10" =>
-                -- WRITE YOUR CODE HERE
-                s_hex <= data2_i;
-                dp_o  <= dp_i(3);
-                dig_o <= "1011";
-                
-            when "01" =>
-                -- WRITE YOUR CODE HERE
-                s_hex <= data1_i;
-                dp_o  <= dp_i(3);
-                dig_o <= "1101";
-                
-            when others =>
-                -- WRITE YOUR CODE HERE
-                s_hex <= data0_i;
-                dp_o  <= dp_i(3);
-                dig_o <= "1110";
-                
-        end case;
-    end process p_mux;
-```
-
-### Listing of VHDL testbench file `tb_driver_7seg_4digits`
-
-```vhdl
-
-```
-
-### Screenshot with simulated time waveforms
-
-![waveforms](Images/waveforms.png)
-
-### Listing of VHDL architecture of the top layer
-
-```vhdl
 ------------------------------------------------------------------------
 -- Architecture body for top level
 ------------------------------------------------------------------------
@@ -106,10 +99,3 @@ begin
     AN(7 downto 4) <= b"1111";
 
 end architecture Behavioral;
-```
-
-## 3. Eight-digit driver
-
-### Image of the driver schematic
-
-![driver schematic](Images/schematic.png)
