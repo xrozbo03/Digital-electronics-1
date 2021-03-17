@@ -6,7 +6,32 @@
 
 ![Timing diagram](Images/wavedrom.png)
 
-## 2.
+## 2. Display driver
 
-## 3.
+### Listing of VHDL code of the process `p_mux`
 
+```vhdl
+
+```
+
+### Listing of VHDL testbench file `tb_driver_7seg_4digits`
+
+```vhdl
+
+```
+
+### Screenshot with simulated time waveforms
+
+![waveforms](Images/waveforms.png)
+
+### Listing of VHDL architecture of the top layer
+
+```vhdl
+
+```
+
+## 3. Eight-digit driver
+
+### Image of the driver schematic
+
+![driver schematic](Images/schematic.png)
