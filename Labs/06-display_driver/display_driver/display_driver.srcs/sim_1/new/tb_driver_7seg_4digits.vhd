@@ -30,7 +30,6 @@ architecture testbench of tb_driver_7seg_4digits is
     --Local signals
     signal s_clk_100MHz : std_logic;
     --- WRITE YOUR CODE HERE
-    signal s_clk        : std_logic;
     signal s_reset      : std_logic;
     signal s_data0_i    : std_logic_vector(4-1 downto 0);
     signal s_data1_i    : std_logic_vector(4-1 downto 0);
@@ -105,26 +104,28 @@ begin
         s_data1_i <= "0100";
         s_data0_i <= "0010";
         s_dp_i    <= "0111";
+        wait for 10 ns;
         
-         -- Expected output
-        assert (s_seg_o = "0010010")
+        -- Expected output
+        assert ((s_seg_o = "0010010") or (s_dig_o = "1110") or  (s_dp_p = '0'))
         -- If false, then report an error
-        report "Test failed for input on 0ns" severity error;
+        report "Test failed for input on 10ns" severity error;
         
-                 -- Expected output
-        assert (s_seg_o = "0000110")
-        -- If false, then report an error
-        report "Test failed for input on 0ns 2" severity error;
-        
-        wait for 250 ns;
+        wait for 240 ns;
 
         s_data3_i <= "0000";
         s_data2_i <= "0011";
         s_data1_i <= "0010";
         s_data0_i <= "0001";
         s_dp_i    <= "0011";
+        wait for 10 ns;
         
-        wait for 250 ns;
+        -- Expected output
+        assert ((s_seg_o = "1001111") or (s_dig_o = "1110") or  (s_dp_p = '0'))
+        -- If false, then report an error
+        report "Test failed for input on 260ns" severity error;
+        
+        wait for 240 ns;
 
         s_data3_i <= "1000";
         s_data2_i <= "1011";
