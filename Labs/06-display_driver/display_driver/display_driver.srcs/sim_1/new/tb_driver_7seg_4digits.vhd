@@ -107,7 +107,7 @@ begin
         wait for 10 ns;
         
         -- Expected output
-        assert ((s_seg_o = "0010010") or (s_dig_o = "1110") or  (s_dp_p = '0'))
+        assert ((s_seg_o = "0010010") and (s_dig_o = "1110") and (s_dp_o = '1'))
         -- If false, then report an error
         report "Test failed for input on 10ns" severity error;
         
@@ -117,21 +117,27 @@ begin
         s_data2_i <= "0011";
         s_data1_i <= "0010";
         s_data0_i <= "0001";
-        s_dp_i    <= "0011";
+        s_dp_i    <= "1011";
         wait for 10 ns;
         
         -- Expected output
-        assert ((s_seg_o = "1001111") or (s_dig_o = "1110") or  (s_dp_p = '0'))
+        assert ((s_seg_o = "1001111") and (s_dig_o = "1110") and  (s_dp_o = '1'))
         -- If false, then report an error
         report "Test failed for input on 260ns" severity error;
         
         wait for 240 ns;
 
         s_data3_i <= "1000";
-        s_data2_i <= "1011";
-        s_data1_i <= "1010";
+        s_data2_i <= "0101";
+        s_data1_i <= "0011";
         s_data0_i <= "1001";
-        s_dp_i    <= "0001";
+        s_dp_i    <= "1101";
+        wait for 50 ns;
+        
+        -- Expected output
+        assert ((s_seg_o = "0001000") and (s_dig_o = "1101") and  (s_dp_o = '0'))
+        -- If false, then report an error
+        report "Test failed for input on 510ns" severity error;
         
         report "Stimulus process finished" severity note;
         wait;
