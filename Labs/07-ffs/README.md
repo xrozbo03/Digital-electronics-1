@@ -36,17 +36,16 @@
 ### VHDL code listing of the process `p_d_latch`
 
 ```vhdl
- p_d_latch : process (d, arst, en)
-    begin
-        if (arst = '1') then
-            q     <= '0';
-            q_bar <= '1';
-        elsif (en = '1') then
-            q     <= d;
-            q_bar <= not d;
-        end if;
-        
-    end process p_d_latch;
+	p_d_latch : process (d, arst, en)
+	begin
+   		if (arst = '1') then
+        	q     <= '0';
+        	q_bar <= '1';
+    	elsif (en = '1') then
+        	q     <= d;
+        	q_bar <= not d;
+    	end if;   
+	end process p_d_latch;
 ```
 
 ### Listing of VHDL reset and stimulus processes from the testbench `tb_d_latch`
@@ -55,7 +54,7 @@
 --------------------------------------------------------------------
 -- Reset generation process
 --------------------------------------------------------------------
- p_reset_gen : process
+ 	p_reset_gen : process
     begin
         s_arst <= '0';
         wait for 40 ns;
@@ -74,7 +73,7 @@
 -- Data generation process
 --------------------------------------------------------------------
      p_stimulus : process
-    begin
+     begin
         report "Stimulus process started" severity note;
         s_d   <= '0';
         s_en  <= '0';
@@ -185,13 +184,149 @@
 #### VHDL code listing of the processes
 
 ```vhdl
-
+    p_d_ff_latch : process (clk, arst)
+    begin
+        if (arst = '1') then
+            q     <= '0';
+            q_bar <= '1';
+        elsif rising_edge(clk) then
+            q     <= d;
+            q_bar <= not d;
+        end if;
+        
+    end process p_d_ff_latch;
 ```
 
 #### Listing of VHDL clock, reset and stimulus processes from the testbench
 
 ```vhdl
+    --------------------------------------------------------------------
+    -- Clock generation process
+    --------------------------------------------------------------------
+    p_clk_gen : process
+    begin
+        while now < 750 ns loop         -- 75 periods of 100MHz clock
+            s_clk_100MHz <= '0';
+            wait for c_CLK_100MHZ_PERIOD / 2;
+            s_clk_100MHz <= '1';
+            wait for c_CLK_100MHZ_PERIOD / 2;
+        end loop;
+        wait;
+    end process p_clk_gen;
+    
+    --------------------------------------------------------------------
+    -- Reset generation process
+    --------------------------------------------------------------------
+    p_reset_gen : process
+    begin
+        s_arst <= '0';
+        wait for 53 ns;
+        
+        s_arst <= '1';
+        wait for 53 ns;
+        
+        s_arst <= '0';
+        wait for 53 ns;
+        
+        s_arst <= '1';
+        wait;
+    end process p_reset_gen;
 
+    --------------------------------------------------------------------
+    -- Data generation process
+    --------------------------------------------------------------------
+     p_stimulus : process
+     begin
+        report "Stimulus process started" severity note;
+        
+        -- d sekv
+        wait for 10 ns;
+        s_d   <= '1';
+        wait for 10 ns;
+        s_d   <= '0';
+        wait for 10 ns;
+        s_d   <= '1';
+        
+        wait for 2 ns;
+        -- Expected output
+        assert ((s_q = '0') and (s_q_bar = '1'))
+        -- If false, then report an error
+        report "Test failed for input on 32ns" severity error;
+        
+        wait for 5 ns;
+        -- Expected output
+        assert ((s_q = '1') and (s_q_bar = '0'))
+        -- If false, then report an error
+        report "Test failed for input on 35ns" severity error;
+        
+        wait for 3 ns;
+        s_d   <= '0';
+        wait for 10 ns;
+        s_d   <= '1';
+        wait for 10 ns;
+        s_d   <= '0';
+        --/d sekv
+        
+        wait for 3 ns;
+        
+        -- d sekv
+        wait for 10 ns;
+        s_d   <= '1';
+        
+        assert ((s_q = '0') and (s_q_bar = '1'))
+        -- If false, then report an error
+        report "Test failed for input on 73ns" severity error;
+        
+        wait for 10 ns;
+        s_d   <= '0';
+        wait for 10 ns;
+        s_d   <= '1';
+        wait for 10 ns;
+        s_d   <= '0';     
+        wait for 10 ns;
+        s_d   <= '1';
+        
+        assert ((s_q = '0') and (s_q_bar = '1'))
+        -- If false, then report an error
+        report "Test failed for input on 73ns" severity error;
+        
+        wait for 10 ns;
+        s_d   <= '0';
+        --/d sekv
+        
+        -- d sekv
+        wait for 10 ns;
+        s_d   <= '1';
+        wait for 10 ns;
+        s_d   <= '0';
+        wait for 10 ns;
+        s_d   <= '1';
+        wait for 10 ns;
+        s_d   <= '0';
+        wait for 10 ns;
+        s_d   <= '1';
+        wait for 10 ns;
+        s_d   <= '0';
+        --/d sekv
+        
+        -- d sekv
+        wait for 10 ns;
+        s_d   <= '1';
+        wait for 10 ns;
+        s_d   <= '0';
+        wait for 10 ns;
+        s_d   <= '1';
+        wait for 10 ns;
+        s_d   <= '0';
+        wait for 10 ns;
+        s_d   <= '1';
+        wait for 10 ns;
+        s_d   <= '0';
+        --/d sekv
+                
+        report "Stimulus process finished" severity note;
+        wait;
+     end process p_stimulus;
 ```
 
 #### Screenshot, with simulated time waveforms
@@ -221,13 +356,142 @@
 #### VHDL code listing of the processes
 
 ```vhdl
-
+    p_jk_ff_latch : process (clk)
+    begin
+        if rising_edge(clk) then
+            if (rst = '1') then
+                s_q <= '0';
+            else    
+                if (j = '0' and k = '0') then
+                    s_q <= s_q;
+                    
+                elsif (j = '0' and k = '1') then
+                    s_q <= '0';
+                    
+                elsif (j = '1' and k = '0') then
+                    s_q <= '1';
+                
+                elsif (j = '1' and k = '1') then
+                    s_q <= not s_q;
+                    
+                end if;
+            end if;
+        end if;
+        
+    end process p_jk_ff_latch;
+    
+    q       <= s_q;
+    q_bar   <= not s_q;
 ```
 
 #### Listing of VHDL clock, reset and stimulus processes from the testbench
 
 ```vhdl
+    --------------------------------------------------------------------
+    -- Clock generation process
+    --------------------------------------------------------------------
+    p_clk_gen : process
+    begin
+        while now < 750 ns loop         -- 75 periods of 100MHz clock
+            s_clk_100MHz <= '0';
+            wait for c_CLK_100MHZ_PERIOD / 2;
+            s_clk_100MHz <= '1';
+            wait for c_CLK_100MHZ_PERIOD / 2;
+        end loop;
+        wait;
+    end process p_clk_gen;
+    
+    --------------------------------------------------------------------
+    -- Reset generation process
+    --------------------------------------------------------------------
+    p_reset_gen : process
+    begin
+        s_rst <= '0';
+        wait for 53 ns;
+        
+        s_rst <= '1';
+        wait for 15 ns;
+        
+        s_rst <= '0';
 
+        wait;
+    end process p_reset_gen;
+    
+    --------------------------------------------------------------------
+    -- Data generation process
+    --------------------------------------------------------------------
+     p_stimulus : process
+     begin
+        report "Stimulus process started" severity note;
+       
+        wait for 13 ns;
+        s_j <= '0';
+        s_k <= '0';
+        wait for 20 ns;
+        s_j <= '0';
+        s_k <= '1';
+        
+        wait for 5 ns;
+        assert ((s_q = '0') and (s_q_bar = '1'))
+        -- If false, then report an error
+        report "Test failed for input on 38ns" severity error;
+        
+        wait for 15 ns;
+        s_j <= '1';
+        s_k <= '0';
+        
+        wait for 10 ns;
+        assert ((s_q = '0') and (s_q_bar = '1'))
+        -- If false, then report an error
+        report "Test failed for input on 63ns" severity error;
+        
+        wait for 10 ns;
+        s_j <= '1';
+        s_k <= '1';
+        
+        assert ((s_q = '0') and (s_q_bar = '1'))
+        -- If false, then report an error
+        report "Test failed for input on 73ns" severity error;
+        
+        wait for 10 ns;
+        assert ((s_q = '1') and (s_q_bar = '0'))
+        -- If false, then report an error
+        report "Test failed for input on 83ns" severity error;
+        
+        wait for 10 ns;
+        s_j <= '0';
+        s_k <= '0';
+        wait for 20 ns;
+        s_j <= '0';
+        s_k <= '1';
+        wait for 20 ns;
+        s_j <= '1';
+        s_k <= '0';
+        wait for 20 ns;
+        s_j <= '1';
+        s_k <= '1';
+        
+        wait for 20 ns;
+        s_j <= '0';
+        s_k <= '0';
+        wait for 20 ns;
+        s_j <= '0';
+        s_k <= '1';
+        wait for 20 ns;
+        s_j <= '1';
+        s_k <= '0';
+        wait for 20 ns;
+        s_j <= '1';
+        s_k <= '1';
+        
+        wait for 55 ns;
+        assert ((s_q = '1') and (s_q_bar = '0'))
+        -- If false, then report an error
+        report "Test failed for input on 288ns" severity error;
+                       
+        report "Stimulus process finished" severity note;
+        wait;
+     end process p_stimulus;
 ```
 
 #### Screenshot, with simulated time waveforms
