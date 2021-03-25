@@ -46,7 +46,7 @@ architecture Behavioral of jk_ff_rst is
     signal s_q  : std_logic;
 begin
 
-    p_jk_ff_latch : process (clk)
+    p_jk_ff_rst_latch : process (clk)
     begin
         if rising_edge(clk) then
             if (rst = '1') then
@@ -68,7 +68,7 @@ begin
             end if;
         end if;
         
-    end process p_jk_ff_latch;
+    end process p_jk_ff_rst_latch;
     
     q       <= s_q;
     q_bar   <= not s_q;

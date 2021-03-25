@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date: 24.03.2021 15:53:21
+-- Create Date: 25.03.2021 14:08:48
 -- Design Name: 
--- Module Name: tb_d_ff_arst - Behavioral
+-- Module Name: tb_d_ff_rst - Behavioral
 -- Project Name: 
 -- Target Devices: 
 -- Tool Versions: 
@@ -31,28 +31,27 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity tb_d_ff_arst is
+entity tb_d_ff_rst is
 --  Port ( );
-end tb_d_ff_arst;
+end tb_d_ff_rst;
 
-architecture Behavioral of tb_d_ff_arst is
+architecture Behavioral of tb_d_ff_rst is
     -- Local constants
     constant c_CLK_100MHZ_PERIOD : time    := 10 ns;
 
     --Local signals
     signal s_clk_100MHz : std_logic;
     
-    signal s_arst   : std_logic;
+    signal s_rst   : std_logic;
     signal s_d      : std_logic;
     signal s_q      : std_logic;
     signal s_q_bar  : std_logic;
-    
 begin
 
-    uut_d_ff_asrt: entity work.d_ff_arst
+    uut_d_ff_srt: entity work.d_ff_rst
     port map (
         clk     => s_clk_100MHz,
-        arst    => s_arst,
+        rst     => s_rst,
         d       => s_d,
         q       => s_q,
         q_bar   => s_q_bar        
@@ -77,19 +76,19 @@ begin
     --------------------------------------------------------------------
     p_reset_gen : process
     begin
-        s_arst <= '0';
+        s_rst <= '0';
         wait for 53 ns;
         
-        s_arst <= '1';
+        s_rst <= '1';
         wait for 53 ns;
         
-        s_arst <= '0';
+        s_rst <= '0';
         wait for 53 ns;
         
-        s_arst <= '1';
+        s_rst <= '1';
         wait;
     end process p_reset_gen;
-
+    
     --------------------------------------------------------------------
     -- Data generation process
     --------------------------------------------------------------------
@@ -97,7 +96,7 @@ begin
      begin
         report "Stimulus process started" severity note;
         
-        -- d sekv
+         -- d sekv
         wait for 10 ns;
         s_d   <= '1';
         wait for 10 ns;
@@ -142,12 +141,7 @@ begin
         wait for 10 ns;
         s_d   <= '0';     
         wait for 10 ns;
-        s_d   <= '1';
-        
-        assert ((s_q = '0') and (s_q_bar = '1'))
-        -- If false, then report an error
-        report "Test failed for input on 113ns" severity error;
-        
+        s_d   <= '1';      
         wait for 10 ns;
         s_d   <= '0';
         --/d sekv
@@ -161,6 +155,11 @@ begin
         s_d   <= '1';
         wait for 10 ns;
         s_d   <= '0';
+               
+        assert ((s_q = '1') and (s_q_bar = '0'))
+        -- If false, then report an error
+        report "Test failed for input on 163ns" severity error;
+        
         wait for 10 ns;
         s_d   <= '1';
         wait for 10 ns;
@@ -185,5 +184,5 @@ begin
         report "Stimulus process finished" severity note;
         wait;
      end process p_stimulus;
-
+        
 end Behavioral;
