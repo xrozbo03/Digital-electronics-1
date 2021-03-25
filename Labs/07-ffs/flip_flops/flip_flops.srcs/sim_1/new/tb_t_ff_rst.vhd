@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date: 25.03.2021 14:08:48
+-- Create Date: 25.03.2021 15:12:50
 -- Design Name: 
--- Module Name: tb_d_ff_rst - Behavioral
+-- Module Name: tb_t_ff_rst - Behavioral
 -- Project Name: 
 -- Target Devices: 
 -- Tool Versions: 
@@ -31,11 +31,11 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity tb_d_ff_rst is
+entity tb_t_ff_rst is
 --  Port ( );
-end tb_d_ff_rst;
+end tb_t_ff_rst;
 
-architecture Behavioral of tb_d_ff_rst is
+architecture Behavioral of tb_t_ff_rst is
     -- Local constants
     constant c_CLK_100MHZ_PERIOD : time    := 10 ns;
 
@@ -43,16 +43,16 @@ architecture Behavioral of tb_d_ff_rst is
     signal s_clk_100MHz : std_logic;
     
     signal s_rst   : std_logic;
-    signal s_d      : std_logic;
+    signal s_t      : std_logic;
     signal s_q      : std_logic;
     signal s_q_bar  : std_logic;
 begin
 
-    uut_d_ff_rst: entity work.d_ff_rst
+    uut_t_ff_rst : entity work.p_t_ff_rst
     port map (
         clk     => s_clk_100MHz,
         rst     => s_rst,
-        d       => s_d,
+        t       => s_t,
         q       => s_q,
         q_bar   => s_q_bar        
     );
@@ -70,7 +70,7 @@ begin
         end loop;
         wait;
     end process p_clk_gen;
-    
+
     --------------------------------------------------------------------
     -- Reset generation process
     --------------------------------------------------------------------
@@ -83,106 +83,77 @@ begin
         wait for 53 ns;
         
         s_rst <= '0';
-        wait for 53 ns;
-        
-        s_rst <= '1';
         wait;
     end process p_reset_gen;
-    
+  
     --------------------------------------------------------------------
     -- Data generation process
     --------------------------------------------------------------------
      p_stimulus : process
      begin
         report "Stimulus process started" severity note;
-        
-         -- d sekv
+    
+        -- t sekv
         wait for 10 ns;
-        s_d   <= '1';
+        s_t   <= '1';
         wait for 10 ns;
-        s_d   <= '0';
+        s_t   <= '0';
         wait for 10 ns;
-        s_d   <= '1';
-        
-        wait for 2 ns;
+        s_t   <= '1';
+        wait for 10 ns;
+        s_t   <= '0';
+        wait for 10 ns;
+        s_t   <= '1';
+        wait for 10 ns;
+        s_t   <= '0';
+        -- t sekv
+         
         -- Expected output
         assert ((s_q = '0') and (s_q_bar = '1'))
         -- If false, then report an error
-        report "Test failed for input on 32ns" severity error;
-        
-        wait for 5 ns;
+        report "Test failed for input on 60ns" severity error; 
+         
+        -- t sekv
+        wait for 10 ns;
+        s_t   <= '1';
+        wait for 10 ns;
+        s_t   <= '0';
+        wait for 10 ns;
+        s_t   <= '1';
+        wait for 10 ns;
+        s_t   <= '0';
+        wait for 10 ns;
+        s_t   <= '1';
+        wait for 10 ns;
+        s_t   <= '0';
+        -- t sekv
+         
         -- Expected output
         assert ((s_q = '1') and (s_q_bar = '0'))
         -- If false, then report an error
-        report "Test failed for input on 37ns" severity error;
+        report "Test failed for input on 120ns" severity error;
         
-        wait for 3 ns;
-        s_d   <= '0';
-        wait for 10 ns;
-        s_d   <= '1';
-        wait for 10 ns;
-        s_d   <= '0';
-        --/d sekv
-        
-        wait for 3 ns;
-        
-        -- d sekv
-        wait for 10 ns;
-        s_d   <= '1';
-        
-        assert ((s_q = '0') and (s_q_bar = '1'))
-        -- If false, then report an error
-        report "Test failed for input on 73ns" severity error;
-        
-        wait for 10 ns;
-        s_d   <= '0';
-        wait for 10 ns;
-        s_d   <= '1';
-        wait for 10 ns;
-        s_d   <= '0';     
-        wait for 10 ns;
-        s_d   <= '1';      
-        wait for 10 ns;
-        s_d   <= '0';
-        --/d sekv
-        
-        -- d sekv
-        wait for 10 ns;
-        s_d   <= '1';
-        wait for 10 ns;
-        s_d   <= '0';
-        wait for 10 ns;
-        s_d   <= '1';
-        wait for 10 ns;
-        s_d   <= '0';
-               
+        wait for 40 ns;
+        -- Expected output
         assert ((s_q = '1') and (s_q_bar = '0'))
         -- If false, then report an error
-        report "Test failed for input on 163ns" severity error;
-        
-        wait for 10 ns;
-        s_d   <= '1';
-        wait for 10 ns;
-        s_d   <= '0';
-        --/d sekv
-        
-        -- d sekv
-        wait for 10 ns;
-        s_d   <= '1';
-        wait for 10 ns;
-        s_d   <= '0';
-        wait for 10 ns;
-        s_d   <= '1';
-        wait for 10 ns;
-        s_d   <= '0';
-        wait for 10 ns;
-        s_d   <= '1';
-        wait for 10 ns;
-        s_d   <= '0';
-        --/d sekv
+        report "Test failed for input on 160ns" severity error;
                 
+        wait for 40 ns;
+        s_t   <= '1';
+        
+        wait for 30 ns;
+        -- Expected output
+        assert ((s_q = '0') and (s_q_bar = '1'))
+        -- If false, then report an error
+        report "Test failed for input on 230ns" severity error;
+        
+        wait for 50 ns;
+        s_t   <= '0';
+
+                   
         report "Stimulus process finished" severity note;
         wait;
      end process p_stimulus;
-        
+            
 end Behavioral;
