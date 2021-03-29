@@ -181,7 +181,7 @@
 
 ### `p_d_ff_arst`
 
-#### VHDL code listing of the processes
+#### VHDL code listing of the processes `p_d_ff_arst`
 
 ```vhdl
     p_d_ff_arst : process (clk, arst)
@@ -197,7 +197,7 @@
     end process p_d_ff_arst;
 ```
 
-#### Listing of VHDL clock, reset and stimulus processes from the testbench
+#### Listing of VHDL clock, reset and stimulus processes from the testbench `p_d_ff_arst`
 
 ```vhdl
     --------------------------------------------------------------------
@@ -329,13 +329,13 @@
      end process p_stimulus;
 ```
 
-#### Screenshot, with simulated time waveforms
+#### Screenshot, with simulated time waveforms `p_d_ff_arst`
 
 ![waveforms](Images/waveforms3_1.png)
 
 ### `p_d_ff_rst`
 
-#### VHDL code listing of the processes
+#### VHDL code listing of the processes `p_d_ff_rst`
 
 ```vhdl
     p_d_ff_rst : process (clk)
@@ -353,7 +353,7 @@
     end process p_d_ff_rst;
 ```
 
-#### Listing of VHDL clock, reset and stimulus processes from the testbench
+#### Listing of VHDL clock, reset and stimulus processes from the testbench `p_d_ff_rst`
 
 ```vhdl
     --------------------------------------------------------------------
@@ -485,13 +485,13 @@
      end process p_stimulus;
 ```
 
-#### Screenshot, with simulated time waveforms
+#### Screenshot, with simulated time waveforms `p_d_ff_rst`
 
 ![waveforms](Images/waveforms3_2.png)
 
 ### `p_jk_ff_rst`
 
-#### VHDL code listing of the processes
+#### VHDL code listing of the processes `p_jk_ff_rst`
 
 ```vhdl
     p_jk_ff_rst : process (clk)
@@ -522,7 +522,7 @@
     q_bar   <= not s_q;
 ```
 
-#### Listing of VHDL clock, reset and stimulus processes from the testbench
+#### Listing of VHDL clock, reset and stimulus processes from the testbench `p_jk_ff_rst`
 
 ```vhdl
     --------------------------------------------------------------------
@@ -632,13 +632,13 @@
      end process p_stimulus;
 ```
 
-#### Screenshot, with simulated time waveforms
+#### Screenshot, with simulated time waveforms `p_jk_ff_rst`
 
 ![waveforms](Images/waveforms3_3.png)
 
 ### `p_t_ff_rst`
 
-#### VHDL code listing of the processes
+#### VHDL code listing of the processes `p_t_ff_rst`
 
 ```vhdl
     p_t_ff_rst : process (clk)
@@ -659,7 +659,7 @@
     q_bar   <= not s_q;
 ```
 
-#### Listing of VHDL clock, reset and stimulus processes from the testbench
+#### Listing of VHDL clock, reset and stimulus processes from the testbench `p_t_ff_rst`
 
 ```vhdl
     --------------------------------------------------------------------
@@ -762,7 +762,7 @@
      end process p_stimulus;
 ```
 
-#### Screenshot, with simulated time waveforms
+#### Screenshot, with simulated time waveforms `p_t_ff_rst`
 
 ![waveforms](Images/waveforms3_4.png)
 
