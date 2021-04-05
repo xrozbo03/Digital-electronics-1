@@ -160,6 +160,14 @@
 
 ### State table
 
+|**Current state \\ Input** | **00** (no cars) | **01** (cars to west) | **10** (cars to south) | **11** (cars both directions) |
+| :-- | :-: | :-: | :-: | :-: |
+| `STOP1`      | `WEST_GO`  | `WEST_GO` | `SOUTH_GO` | `WEST_GO` |
+| `WEST_GO`    | `WEST_GO`  | `WEST_GO` | `WEST_WAIT` | `WEST_WAIT` |
+| `WEST_WAIT`  | `STOP2` | `STOP2` | `STOP2` | `STOP2` |
+| `STOP2`      | `SOUTH_GO` | `WEST_GO` | `SOUTH_GO` | `SOUTH_GO` |
+| `SOUTH_GO`   | `SOUTH_GO` | `SOUTH_WAIT` | `SOUTH_GO` | `SOUTH_WAIT` |
+| `SOUTH_WAIT` | `STOP1`  | `STOP1` | `STOP1` | `STOP1` |
 
 
 ### State diagram
