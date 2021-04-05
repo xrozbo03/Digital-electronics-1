@@ -24,7 +24,7 @@ use ieee.numeric_std.all;
 ------------------------------------------------------------------------
 -- Entity declaration for traffic light controller
 ------------------------------------------------------------------------
-entity tlc is
+entity tlc_smart is
     port(
         clk     : in  std_logic;
         reset   : in  std_logic;
@@ -33,12 +33,12 @@ entity tlc is
         south_o : out std_logic_vector(3 - 1 downto 0);
         west_o  : out std_logic_vector(3 - 1 downto 0)
     );
-end entity tlc;
+end entity tlc_smart;
 
 ------------------------------------------------------------------------
 -- Architecture declaration for traffic light controller
 ------------------------------------------------------------------------
-architecture Behavioral of tlc is
+architecture Behavioral of tlc_smart is
 
     -- Define the states
     type t_state is (STOP1,
@@ -85,7 +85,7 @@ begin
     -- The sequential process with synchronous reset and clock_enable 
     -- entirely controls the s_state signal by CASE statement.
     --------------------------------------------------------------------
-    p_traffic_fsm : process(clk)
+    p_smart_traffic_fsm : process(clk)
     begin
         if rising_edge(clk) then
             if (reset = '1') then       -- Synchronous reset
@@ -199,7 +199,7 @@ begin
                 end case;
             end if; -- Synchronous reset
         end if; -- Rising edge
-    end process p_traffic_fsm;
+    end process p_smart_traffic_fsm;
 
     --------------------------------------------------------------------
     -- p_output_fsm:
